@@ -1,6 +1,6 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-}
-
-module.exports = nextConfig
+module.exports = {
+  env: {
+    PUBLIC_URL: "https://theledgerofjoudi.github.io/sport-complex-token/",
+    assetPrefix: './'
+  }
+};

@@ -1,18 +1,23 @@
 {
+  "homepage": "https://theledgerofjoudi.github.io/sport-complex-token/",
   "name": "sport-complex-token",
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "replaceFilePaths": "node replacer.js",
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next export -o build && npm run replaceFilePaths",
     "start": "next start",
-    "lint": "next lint"
+    "export": "next export -o build && npm run replaceFilePaths",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "ethers": "^5.6.2",
     "next": "12.1.4",
     "react": "18.0.0",
     "react-dom": "18.0.0",
+    "replace-in-file": "^6.3.2",
     "web3": "^1.7.1"
   },
   "devDependencies": {
@@ -21,6 +26,8 @@
     "@types/react-dom": "17.0.14",
     "eslint": "8.12.0",
     "eslint-config-next": "12.1.4",
+    "gh-pages": "^3.2.3",
     "typescript": "4.6.3"
   }
 }
+

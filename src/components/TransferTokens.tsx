@@ -1,21 +1,22 @@
 import Web3 from "web3";
+import { AbiItem } from "web3-utils";
 import { ABI, ADDRESS } from "../config/ContractInterface";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 
-const TransferToken = (probs) => {
+const TransferToken = (probs: { userAddress: any }) => {
   const [receiver, setReceiver] = useState("");
   const [tokens, setTokens] = useState("");
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const address = probs.userAddress;
-    const web3 = await new Web3(Web3.givenProvider);
-    const contract = await new web3.eth.Contract(ABI, ADDRESS);
+    const web3 = new Web3(Web3.givenProvider);
+    const contract = new web3.eth.Contract(ABI as AbiItem[], ADDRESS);
     await contract.methods
       .transfer(receiver, BigInt(tokens) * BigInt(10 ** 18))
       .send({
         from: address,
-        value: parseInt(343 * 10 ** 12),
+        value: "343000000000000",
       });
   };
   return (

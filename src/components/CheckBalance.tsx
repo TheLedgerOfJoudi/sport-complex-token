@@ -1,4 +1,5 @@
 import Web3 from "web3";
+import { AbiItem } from "web3-utils";
 import { ABI, ADDRESS } from "../config/ContractInterface";
 import { useEffect, useState } from "react";
 
@@ -17,7 +18,7 @@ const CheckBalance = () => {
     const fetchBalanceFromContract = async () => {
       const web3 = new Web3(Web3.givenProvider);
       const address = await getUserAddress();
-      const contract = await new web3.eth.Contract(ABI, ADDRESS);
+      const contract = new web3.eth.Contract(ABI as AbiItem[], ADDRESS);
       let balance = await contract.methods.balanceOf(address).call();
       balance = balance / 10 ** 18;
       setValue(balance);
