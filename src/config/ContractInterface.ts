@@ -1,6 +1,6 @@
-export const ADDRESS = "0xFD0604A6b1A6BBa1C9700E4eeFA1F25A94AEdC36";
+export const ADDRESS = "0x4F64CfF7519470ca1d11C8E47E27B6c4A5F4F6e6";
 
-export const ABI = [
+export const ABI =[
 	{
 		"anonymous": false,
 		"inputs": [

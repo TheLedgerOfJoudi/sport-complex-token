@@ -1,23 +1,14 @@
 import Web3 from "web3";
 import { ABI, ADDRESS } from "../config/ContractInterface";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-const getUserAddress = async () => {
-  const web3 = new Web3(Web3.givenProvider);
-  let address = "";
-  await web3.eth.getAccounts().then((accounts) => {
-    address = accounts[0];
-  });
-  return address;
-};
-
-const TransferToken = () => {
+const TransferToken = (probs) => {
   const [receiver, setReceiver] = useState("");
   const [tokens, setTokens] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const address = await getUserAddress();
+    const address = probs.userAddress;
     const web3 = await new Web3(Web3.givenProvider);
     const contract = await new web3.eth.Contract(ABI, ADDRESS);
     await contract.methods
