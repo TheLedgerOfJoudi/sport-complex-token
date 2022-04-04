@@ -29,6 +29,7 @@ const Home: NextPage = () => {
     <div className={styles.container}>
       <GetCoin userAddress={address} />
       <CheckBalance />
+      <hr />
       <TransferToken userAddress={address} />
     </div>
   );
